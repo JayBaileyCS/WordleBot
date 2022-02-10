@@ -11,7 +11,7 @@ def get_words(file):
     f = open(file, "r")
     for line in f:
         if is_eligible(line):
-            words.append(line.replace("\n", "")
+            words.append(line.replace("\n", ""))
     return words
 
 def is_eligible(word):
@@ -46,6 +46,7 @@ def find_best_word(word_list, frequency_dict):
             score += frequency_dict[letter]
         if score > max_score:
             best_word = word
+            max_score = score
     return best_word
 
 def filter_word_list(guess_results, word_list, word_guess):
@@ -94,7 +95,7 @@ def return_guess_result(word_guess, secret_word):
     for i in range(len(word_guess)):
         if word_guess[i] == secret_word[i]:
             guess_result.append("green")
-        elif word_guess[i] != secret_word[i] and word_guess[i] not in secret_word:
+        elif word_guess[i] not in secret_word:
             guess_result.append("grey")
         else:
             guess_result.append("gold")
@@ -103,19 +104,20 @@ def return_guess_result(word_guess, secret_word):
 def play_game(word_list):
     """Have the computer play a game of Wordle against itself."""
     secret_word = random.choice(word_list)
+    print(f"{secret_word.upper()} is the word to guess.")
     guesses = 1
-    print(f"{len(word_list)} contained in word list.")
+    print(f"{len(word_list)} words contained in word list.")
     while guesses < 7:
         frequency_dict = create_letter_frequency_table(word_list)
         word_guess = find_best_word(word_list, frequency_dict)
-        print(f"Word guess is {word_guess.upper()}")
+        print(f"Word guess {guesses} is {word_guess.upper()}")
         guess_result = return_guess_result(word_guess, secret_word)
         print(f"Result was {guess_result}")
         if guess_result.count("green") == 5:
             print("The computer guessed correctly! The game is over!")
             return
         print("Filtering words for next guess.")
-        word_list = filter_word(guess_result, word_list, word_guess)
+        word_list = filter_word_list(guess_result, word_list, word_guess)
         print(f"{len(word_list)} words remain.")
         guesses += 1
     print(f"The computer had {len(word_list)} words remaining and lost. The game is over.")

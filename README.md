@@ -56,6 +56,8 @@ Traceback (most recent call last):
 IndexError: string index out of range
 ```
 
+**Notes:**
+
 Alright, so what have we got here? AESIR seems like a solid guess here. All these letters are very common (and indeed, consulting the frequency table I have saved, are indeed the five most common letters, the computer is just better at selecting words than I am) and the score has to be beaten, not tied, in order to pick a new word. So it makes sense that AESIR, not ARISE, would be used, and I is more common than T for our set of five-letter words chosen.
 
 The guess result also appears correct. A, S, and I were all in the word but in the wrong position, wheras E and R were not present in SITAO. Our problem lies when we begin the filter. The filter starts by INCREASING the number of words. How could this happen? My immediate hypothesis is that when we first collect our starting word list, we remove all items that aren't five letters. If these are being added back in somehow, that would explain this. Let's take a look.

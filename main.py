@@ -70,7 +70,7 @@ def filter_green(word_list, letter, index):
     filtered_word_list = []
     for word in word_list:
         if word[index] == letter:
-            filtered_word_list += word
+            filtered_word_list.append(word)
     return filtered_word_list
 
 def filter_gold(word_list, letter, index):
@@ -78,7 +78,7 @@ def filter_gold(word_list, letter, index):
     filtered_word_list = []
     for word in word_list:
         if letter in word and word[index] != letter:
-            filtered_word_list += word
+            filtered_word_list.append(word)
     return filtered_word_list
 
 def filter_grey(word_list, letter):
@@ -86,7 +86,7 @@ def filter_grey(word_list, letter):
     filtered_word_list = []
     for word in word_list:
         if letter not in word:
-            filtered_word_list += word
+            filtered_word_list.append(word)
     return filtered_word_list
 
 def return_guess_result(word_guess, secret_word):

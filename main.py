@@ -64,6 +64,7 @@ def filter_word_list(guess_results, word_list, word_guess):
         print(f"DEBUG: {len(word_list)} words remain.")
         if len(word_list) < WORD_LOG_LIMIT:
             print(word_list)
+    return word_list
 
 def filter_green(word_list, letter, index):
     """Return all words with the letter in position."""

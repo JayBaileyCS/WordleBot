@@ -151,3 +151,84 @@ def filter_word_list(guess_results, word_list, word_guess):
 ```
 
 Notice something? That's right - filter_word_list never actually returns the completed word list! I added in this line, and called it for the day, since again, not much time today. On the plus side, the error occurred on the second-to-last line of the guess loop and the last line is literally just ```guesses += 1``` so I am confident that tomorrow we will get to see what happens when the computer tries to make another guess using the now limited word list it's filtered down to. Hopefully we'll even get it to the point where we can see a list of words printed (<50 words left in the list) and see it try and resolve the game with a victory.
+
+**Iteration 4: (Saturday, Feb 12, 2022)**
+
+The program successfully ran to completion ten times today! The complete output won't be shown here since there are hundreds of lines of it, but we will go through one of the games!
+
+**Output:**
+
+CALIX is the word to guess.<br>
+10173 words contained in word list.<br>
+Word guess 1 is AESIR<br>
+Result was ['gold', 'grey', 'grey', 'green', 'grey']<br>
+Filtering words for next guess.<br>
+DEBUG: 10173 words at start of filter.<br>
+DEBUG: 4291 words remain.<br>
+DEBUG: 2766 words remain.<br>
+DEBUG: 1687 words remain.<br>
+DEBUG: 208 words remain.<br>
+DEBUG: 126 words remain.<br>
+126 words remain.<br>
+Word guess 2 is CALIN<br>
+Result was ['green', 'green', 'green', 'green', 'grey']<br>
+Filtering words for next guess.<br>
+DEBUG: 126 words at start of filter.<br>
+DEBUG: 20 words remain.<br>
+['cabin', 'cabio', 'cafiz', 'cagit', 'cahiz', 'calid', 'calif', 'calin', 'calix', 'canid', 'cavil', 'cavin', 'chain', 'chait', 'claik', 'claim', 'coaid', 'cobia', 'conia', 'copia']<br>
+DEBUG: 12 words remain.<br>
+['cabin', 'cabio', 'cafiz', 'cagit', 'cahiz', 'calid', 'calif', 'calin', 'calix', 'canid', 'cavil', 'cavin']<br>
+DEBUG: 4 words remain.<br>
+['calid', 'calif', 'calin', 'calix']<br>
+DEBUG: 4 words remain.<br>
+['calid', 'calif', 'calin', 'calix']<br>
+DEBUG: 3 words remain.<br>
+['calid', 'calif', 'calix']<br>
+3 words remain.
+Word guess 3 is CALID<br>
+Result was ['green', 'green', 'green', 'green', 'grey']<br>
+Filtering words for next guess.<br>
+DEBUG: 3 words at start of filter.<br>
+['calid', 'calif', 'calix']<br>
+DEBUG: 3 words remain.<br>
+['calid', 'calif', 'calix']<br>
+DEBUG: 3 words remain.<br>
+['calid', 'calif', 'calix']<br>
+DEBUG: 3 words remain.<br>
+['calid', 'calif', 'calix']<br>
+DEBUG: 3 words remain.<br>
+['calid', 'calif', 'calix']<br>
+DEBUG: 2 words remain.<br>
+['calif', 'calix']<br>
+2 words remain.<br>
+Word guess 4 is CALIF<br>
+Result was ['green', 'green', 'green', 'green', 'grey']<br>
+Filtering words for next guess.<br>
+DEBUG: 2 words at start of filter.<br>
+['calif', 'calix']<br>
+DEBUG: 2 words remain.<br>
+['calif', 'calix']<br>
+DEBUG: 2 words remain.<br>
+['calif', 'calix']<br>
+DEBUG: 2 words remain.<br>
+['calif', 'calix']<br>
+DEBUG: 2 words remain.<br>
+['calif', 'calix']<br>
+DEBUG: 1 words remain.<br>
+['calix']<br>
+1 words remain.<br>
+Word guess 5 is CALIX<br>
+Result was ['green', 'green', 'green', 'green', 'green']<br>
+The computer guessed correctly! The game is over!
+
+The computer succeeded in all games within five guesses in a similar manner.
+
+This is working as intended! There is definitely an AI optimisation that could be made - when faced with the choice of CALID/CALIF/CALIN/CALIX, the optimal play would have been to find a word like FROND which contained at least three of those letters, then used that to determine which of D/F/N/X was correct, allowing for a guaranteed two-guess solve. However, I didn't program the program to play Wordle optimally, just to play it at all, and this is working exactly as we wanted it to.
+
+The next feature I would like to add is support for double letters, words like FLOOD or RIDER. The key would be making sure that this doesn't mess with the letter frequency algorithm, which would require creating separate logic for doubles. Whether I do this or not will depend on my interest in the project.
+
+Lessons learnt:
+
+- A good IDE/linter is important. In the end, I ran three failed iterations of this program. Only one failed iteration was caused by incorrect logic that an IDE like PyCharm wouldn't have caught. Iteration 1 failed due to a call to a function that no longer existed. Iteration 2 failed because of incorrect logic: filtered_word_list += word instead of filtered_word_list.append(word). Iteration 3 failed due to failing to return a value from a function that should have returned a value. I don't know if PyCharm would have gotten that, but using static typing would have.
+
+- 

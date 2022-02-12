@@ -231,4 +231,10 @@ Lessons learnt:
 
 - A good IDE/linter is important. In the end, I ran three failed iterations of this program. Only one failed iteration was caused by incorrect logic that an IDE like PyCharm wouldn't have caught. Iteration 1 failed due to a call to a function that no longer existed. Iteration 2 failed because of incorrect logic: filtered_word_list += word instead of filtered_word_list.append(word). Iteration 3 failed due to failing to return a value from a function that should have returned a value. I don't know if PyCharm would have gotten that, but using static typing would have.
 
-- 
+- Overall, this project has been pretty easy so far - I didn't need to do any significant reworks and all of my ideas were correct, they just weren't properly executed. It may be worth trying again with something a bit more complex. That said, checking the code carefully before Iteration 1 and 2 fixed several errors on each pass, to the point where doing this normally probably would have taken a dozen iterations or more (each only taking a couple minutes of time) so I definitely improved my number of iterations required quite a bit.
+
+- Logging is definitely quite useful with something like this. I tried to take that into account early on but still missed a couple of things like logging the secret word (i.e, logging the target I was aiming at). Having this data made it much easier to debug, especially Iteration 2 which had some strange behaviour and my first instinct was wrong.
+
+Did this project help me establish fit for ML? A little bit. I didn't get frustrated when things failed, even knowing I'd have to wait a day to run them again. I don't think I learned any real skills in the project, but perhaps just practicing carefully going over code and fixing mistakes is a useful ML skill, I just didn't get the chance to practice it more than a couple of times and thus only gained incremental improvement.
+
+Even so, since the project only took 2-4 hours over a few days, I think it was worth the time spent! If I had a null hypothesis for this, it would be "I am not a good fit for ML work." I have definitely failed to reject this, but now I want to learn some actual ML and see how that goes.
